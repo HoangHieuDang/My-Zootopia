@@ -71,6 +71,8 @@ def animals_html_skin_type_filter_list(json_file_path):
         # create 2 html serialized lists: 1 list for skin type, 1 list for unknown skin type
         animals_skin_type_chosen = f"<h2>Animals with skin type {skin_type}</h2>"
         animals_skin_type_unknown = f"<h2>Animals with unknown skin type</h2>"
+        #create counter unknown, if unknown == 0, print out a html <p> element
+        #to inform that there is no animal with unknown skin type
         unknown = 0
         for animal in animals_data:
             if "skin_type" in animal["characteristics"]:
@@ -93,6 +95,7 @@ def animals_list_to_HTML_file(html_file_path, animals_data_str):
     replacing the string '__REPLACE_ANIMALS_INFO__'
     with the animal list
     """
+    #check if the input file a html file or not
     if html_file_path.endswith('.html'):
         print("Valid HTML file")
         with open(html_file_path, "r") as fileobj:
@@ -100,8 +103,9 @@ def animals_list_to_HTML_file(html_file_path, animals_data_str):
     else:
         print("\n please input an html file\n")
         return None
+    #Check if placeholder for template replacement exists in the html file
     if '__REPLACE_ANIMALS_INFO__' in html_data:
-        print("Replace animals info exists")
+        #replace the html serialized string to the __REPLACE_ANIMALS_INFO__ placeholder in html file
         new_html_data = html_data.replace("__REPLACE_ANIMALS_INFO__", animals_data_str)
         with open(html_file_path, "w") as fileobj:
             fileobj.write(new_html_data)
