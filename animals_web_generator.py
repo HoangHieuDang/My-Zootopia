@@ -5,8 +5,8 @@ def main():
     #animals_list = anim.animals_html_list('animals_data.json')
     #anim.animals_list_to_HTML_file('animals_template.html', animals_list)
     #skin_type_list:
-    skin_type_list = anim.animals_html_skin_type_filter_list('animals_data.json')
-    anim.animals_list_to_HTML_file('animals_template.html', skin_type_list)
-
+    #skin_type_list = anim.animals_html_skin_type_filter_list('animals_data.json')
+    #anim.animals_list_to_HTML_file('animals_template.html', skin_type_list)
+    print(anim.animal_info_from_api("fox"))
 if __name__ == "__main__":
     main()

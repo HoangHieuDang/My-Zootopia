@@ -1,4 +1,17 @@
 import json
+import requests
+
+def animal_info_from_api(animal):
+    """
+    Get the information of the input animal from api-ninjas animals api
+    """
+    api_url = 'https://api.api-ninjas.com/v1/animals?name={}'.format(animal)
+    response = requests.get(api_url, headers={'X-Api-Key': 'EIKjltF0DIx93gB/45wrYg==4s7vkTmEkPzqRMgM'})
+    if response.status_code == requests.codes.ok:
+        return response.json()
+    else:
+        print("Error:", response.status_code, response.text)
+        return None
 
 def load_data(file_path):
     """ Loads a JSON file """
