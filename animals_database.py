@@ -4,6 +4,7 @@ import requests
 def animal_info_from_api(animal):
     """
     Get the information of the input animal from api-ninjas animals api
+    return the parsed json data
     """
     api_url = 'https://api.api-ninjas.com/v1/animals?name={}'.format(animal)
     response = requests.get(api_url, headers={'X-Api-Key': 'EIKjltF0DIx93gB/45wrYg==4s7vkTmEkPzqRMgM'})
@@ -12,6 +13,34 @@ def animal_info_from_api(animal):
     else:
         print("Error:", response.status_code, response.text)
         return None
+
+def search_animal_from_api(animal_str):
+    """
+    handles user's choice of animal and get the animal's info
+    return the json file which was gotten from the api and a boolean flag to
+    signal the existence of the animal in the database
+    """
+    if animal_info_from_api(animal_str):
+        return True,animal_info_from_api(animal_str)
+    else:
+        return False,animal_str
+
+def animals_html_list_from_api(search_animal_result_tuple):
+    """
+    reading the content of the parsed json animal data
+    from the search_animal_from_api function's returned tuple
+    iterate through the animal data
+    return the list of animals and their information as HTML list elements
+    """
+    is_animal_exist,input_animal = search_animal_result_tuple
+    html_list = ""
+    if is_animal_exist:
+        for animal in input_animal:
+            html_list += single_animal_html_serialize(animal)
+        return html_list
+    else:
+        html_list += f"<h2>The animal '{input_animal}' doesn't exist!</h2>"
+        return html_list
 
 def load_data(file_path):
     """ Loads a JSON file """
@@ -52,11 +81,11 @@ def animals_html_list(file_path):
     iterate through the animal data
     return the list of animals and their information as HTML list elements
     """
-    animals_html_list = ""
+    html_list = ""
     animals_data = load_data(file_path)
     for animal in animals_data:
-        animals_html_list += single_animal_html_serialize(animal)
-    return animals_html_list
+        html_list += single_animal_html_serialize(animal)
+    return html_list
 
 def animals_html_skin_type_filter_list(json_file_path):
     """
@@ -102,7 +131,7 @@ def animals_html_skin_type_filter_list(json_file_path):
         print("the input skin-type doesn't exist in the database, please try again")
         return None
 
-def animals_list_to_HTML_file(html_file_path, animals_data_str):
+def animals_list_to_html_file(html_file_path, html_animals_data_str):
     """
     Input the animal list into an HTML File by
     replacing the string '__REPLACE_ANIMALS_INFO__'
@@ -119,11 +148,19 @@ def animals_list_to_HTML_file(html_file_path, animals_data_str):
     #Check if placeholder for template replacement exists in the html file
     if '__REPLACE_ANIMALS_INFO__' in html_data:
         #replace the html serialized string to the __REPLACE_ANIMALS_INFO__ placeholder in html file
-        new_html_data = html_data.replace("__REPLACE_ANIMALS_INFO__", animals_data_str)
-        with open(html_file_path, "w") as fileobj:
-            fileobj.write(new_html_data)
-        return True
-    else: print("String to replace not found in the HTML !")
+        new_html_data = html_data.replace("__REPLACE_ANIMALS_INFO__", html_animals_data_str)
+        try:
+            with open(html_file_path, "w") as fileobj:
+                fileobj.write(new_html_data)
+        except Exception as a:
+            print("Something is wrong when trying to write into HTML: " + str(a))
+            return False
+        else:
+            print("Website was successfully generated to the file animals.html.")
+            return True
+    else:
+        print("String to replace not found in the HTML !")
+        return False
 
 
 
