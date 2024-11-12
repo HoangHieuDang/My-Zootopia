@@ -1,6 +1,9 @@
 import requests
 import animals_database
-API_KEY = 'EIKjltF0DIx93gB/45wrYg==4s7vkTmEkPzqRMgM'
+import os
+from dotenv import load_dotenv
+load_dotenv()
+API_KEY = os.getenv('API_KEY')
 """
 Includes:
     # Function to fetch data from ninjas animal api and return the parsed json data

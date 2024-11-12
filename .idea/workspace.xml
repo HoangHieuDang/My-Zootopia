@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="805bee78-a697-4f8b-b463-12eed0834a20" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data_fetcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/animals_database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/animals_template.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/animals_web_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/animals_web_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_fetcher.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,15 +42,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.animals_database.executor&quot;: &quot;Run&quot;,
-    &quot;Python.animals_web_generator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;mai&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.animals_database.executor": "Run",
+    "Python.animals_web_generator.executor": "Run",
+    "Python.data_fetcher.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "mai"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
