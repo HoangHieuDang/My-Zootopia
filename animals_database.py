@@ -1,47 +1,11 @@
 import json
-import requests
-
-def animal_info_from_api(animal):
-    """
-    Get the information of the input animal from api-ninjas animals api
-    return the parsed json data
-    """
-    api_url = 'https://api.api-ninjas.com/v1/animals?name={}'.format(animal)
-    response = requests.get(api_url, headers={'X-Api-Key': 'EIKjltF0DIx93gB/45wrYg==4s7vkTmEkPzqRMgM'})
-    if response.status_code == requests.codes.ok:
-        return response.json()
-    else:
-        print("Error:", response.status_code, response.text)
-        return None
-
-def search_animal_from_api(animal_str):
-    """
-    handles user's choice of animal and get the animal's info
-    return the json file which was gotten from the api and a boolean flag to
-    signal the existence of the animal in the database
-    """
-    if animal_info_from_api(animal_str):
-        return True,animal_info_from_api(animal_str)
-    else:
-        return False,animal_str
-
-def animals_html_list_from_api(search_animal_result_tuple):
-    """
-    reading the content of the parsed json animal data
-    from the search_animal_from_api function's returned tuple
-    iterate through the animal data
-    return the list of animals and their information as HTML list elements
-    """
-    is_animal_exist,input_animal = search_animal_result_tuple
-    html_list = ""
-    if is_animal_exist:
-        for animal in input_animal:
-            html_list += single_animal_html_serialize(animal)
-        return html_list
-    else:
-        html_list += f"<h2>The animal '{input_animal}' doesn't exist!</h2>"
-        return html_list
-
+"""
+includes:
+    # function to load data from a json file
+    # function to serialize data to html element
+    # function to filter animals information based on skin type
+    # function to put serialized html elements into an html page for display
+"""
 def load_data(file_path):
     """ Loads a JSON file """
     with open(file_path, "r") as handle:

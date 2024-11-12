@@ -1,5 +1,12 @@
 import animals_database as anim
-
+import data_fetcher as fetcher
+"""
+The main Zootopia Program includes
+    # function to list all animals
+    # function to filter animals based on skin type
+    # function to search for animal using ninjas animal api
+    # main function
+"""
 def all_animals_list():
     """
     list all animals from a json database
@@ -16,11 +23,11 @@ def skin_type_filter():
 
 def api_animal_search():
     """
-    get information about an input animal
+    search an animal from ninjas animal api and put the info into a html page
     """
     input_animal = input("Please enter a name of an animal: ")
-    search_animal = anim.search_animal_from_api(input_animal)
-    anim.animals_list_to_html_file('animals_template.html', anim.animals_html_list_from_api(search_animal))
+    search_animal = fetcher.search_animal_from_api(input_animal)
+    anim.animals_list_to_html_file('animals_template.html', fetcher.animals_html_list_from_api(search_animal))
 
 def main():
     """
