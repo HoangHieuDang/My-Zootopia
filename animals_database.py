@@ -101,6 +101,7 @@ def animals_list_to_html_file(html_file_path, html_animals_data_str):
     replacing the string '__REPLACE_ANIMALS_INFO__'
     with the animal list
     """
+    html_new_file_path = "animals.html"
     #check if the input file a html file or not
     if html_file_path.endswith('.html'):
         print("Valid HTML file")
@@ -114,7 +115,7 @@ def animals_list_to_html_file(html_file_path, html_animals_data_str):
         #replace the html serialized string to the __REPLACE_ANIMALS_INFO__ placeholder in html file
         new_html_data = html_data.replace("__REPLACE_ANIMALS_INFO__", html_animals_data_str)
         try:
-            with open(html_file_path, "w") as fileobj:
+            with open(html_new_file_path, "w") as fileobj:
                 fileobj.write(new_html_data)
         except Exception as a:
             print("Something is wrong when trying to write into HTML: " + str(a))
